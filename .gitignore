@@ -1,0 +1,11 @@
+__pycache__/
+templates/
+venv/
+EncryptionKeys.py
+draft_1.py
+draft_2.py
+draft_3.py
+draft_app.py
+draft_app_json_api.py
+scratch.py
+

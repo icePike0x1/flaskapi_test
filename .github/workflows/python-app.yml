@@ -58,7 +58,7 @@ jobs:
         id: get_version
         run: |
           # Get the latest tag
-          TAG=$(git describe --tags --abbrev=0 2>/dev/null || "1.0")
+          TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "1.0")
           
           # Extract major and minor versions
           MAJOR=$(echo $TAG | cut -d. -f1)

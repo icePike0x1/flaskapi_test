@@ -27,7 +27,7 @@ jobs:
         sleep 5  # Give the app some time to start
     - name: Test API
       run: |
-        curl -X POST -H "Content-Type: application/json" -d '{"subject": "test 1","data": "this is a test"}' http://127.0.0.1/tasks:5000
+        curl -X POST -H "Content-Type: application/json" -d '{"subject": "test 1","data": "this is a test"}' http://127.0.0.1:5000/tasks
     - name: Stop Flask application
       if: always()
       run: |

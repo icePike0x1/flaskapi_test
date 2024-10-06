@@ -58,7 +58,7 @@ jobs:
         id: get_version
         run: |
           # Get the latest tag
-          TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "1.0")
+          TAG=$(git describe --tags --abbrev=0 2>/dev/null)
           
           # Extract major and minor versions
           MAJOR=$(echo $TAG | cut -d. -f1)
@@ -67,8 +67,9 @@ jobs:
           # Increment the minor version
           if [ -z "$MINOR" ]; then
             MINOR=0
+          else
+            NEW_MINOR=$((MINOR + 1))
           fi
-          NEW_MINOR=$((MINOR + 1))
 
           # Create new tag
           NEW_TAG="$MAJOR.$NEW_MINOR"

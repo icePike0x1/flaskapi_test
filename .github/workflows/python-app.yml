@@ -31,4 +31,4 @@ jobs:
         pip install -r requirements.txt
     - name: Test API
       run: |
-        curl -X POST -H "Content-Type: application/json" -d '{"subject": "test 1","data": "this is a test"}'
+        curl -X POST -H "Content-Type: application/json" -d '{"subject": "test 1","data": "this is a test"}' http://0.0.0.0:5000

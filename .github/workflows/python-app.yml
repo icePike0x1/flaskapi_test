@@ -24,10 +24,13 @@ jobs:
     - name: Start Flask application
       run: |
         python3 app.py &
-    - name: Test API
-      run: |
         sleep 10
+    - name: Test API POST
+      run: |
         curl -X POST -H "Content-Type: application/json" -d '{"subject": "test 1","data": "this is a test"}' http://127.0.0.1:5000/tasks
+    - name: Test API GET
+      run: |
+        curl -X GET http://127.0.0.1:5000/tasks
     - name: Stop Flask application
       if: always()
       run: |

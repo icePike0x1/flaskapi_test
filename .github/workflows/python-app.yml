@@ -46,15 +46,18 @@ jobs:
           kill $(lsof -t -i:5000)
 
       - name: Set up Docker Buildx
+        if: github.event_name != 'pull_request'  # Condition to skip on pull request events
         uses: docker/setup-buildx-action@v3
 
       - name: Login to Docker Hub
+        if: github.event_name != 'pull_request'  # Condition to skip on pull request events
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Determine Docker Image Tag Version
+        if: github.event_name != 'pull_request'  # Condition to skip on pull request events
         id: get_version
         run: |
           # Get the latest tag
@@ -77,6 +80,7 @@ jobs:
           echo "::set-output name=version::$NEW_TAG"
 
       - name: Build and push Docker image
+        if: github.event_name != 'pull_request'  # Condition to skip on pull request events
         uses: docker/build-push-action@v5
         with:
           context: .
